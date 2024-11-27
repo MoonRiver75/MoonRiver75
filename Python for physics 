@@ -1,0 +1,328 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/MoonRiver75/MoonRiver75/blob/main/Python%20for%20physics%20\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**First, we're going to load some public libraries. Libraries have pre-written code which you can use without having to write your own**\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "rUyT_35SVD6I"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "Q3hhV_JzUxn9"
+      },
+      "outputs": [],
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "import numpy as np\n",
+        "from google.colab import files"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**If we want to save our data to google drive, we have to connect our Python notebook to our google drive account! Running this will ask us to confirm that we want this notebook to be able to access drive. This will also make a folder called 'Python4Physics' in your google drive**"
+      ],
+      "metadata": {
+        "id": "5QiJHp4SZL-y"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from google.colab import drive\n",
+        "drive.mount('/content/drive')\n",
+        "!mkdir -p \"/content/drive/My Drive/Python4Physics\"\n",
+        "filepath=\"drive/My Drive/Python4Physics/\""
+      ],
+      "metadata": {
+        "id": "LU175ryUY_lG",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "d10f0c2c-e3ca-4eac-fcb6-d08697e8e983"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Mounted at /content/drive\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**here we define two arrays of real valued numbers,\n",
+        "the first, ranges from 0 to 1.99 in steps of 0.01\n",
+        "the second,  ranges from 0 to 1.9 in steps of 0.1**"
+      ],
+      "metadata": {
+        "id": "mnjRqwj3VTcX"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "x=np.arange(0,2,.01)\n",
+        "x1=np.arange(0,2,.1)"
+      ],
+      "metadata": {
+        "id": "VC2XYj5WVTIO"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**let's print these out to visualize them**"
+      ],
+      "metadata": {
+        "id": "h--pmcdhVulQ"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(\"************************\")\n",
+        "print(\"x = \",x)\n",
+        "print(\"\")\n",
+        "print(\"************************\")\n",
+        "print(\"x1 = \",x1)"
+      ],
+      "metadata": {
+        "id": "F-XmKpbMVe47"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**here we define two functions,\n",
+        "the first, returns x to the power of 1.5, and\n",
+        "the second returns x squared**"
+      ],
+      "metadata": {
+        "id": "106NE_0BV1uJ"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def f1(x):\n",
+        "\treturn pow(x,1.5)\n",
+        "\n",
+        "def f2(x):\n",
+        "\treturn pow(x,2)"
+      ],
+      "metadata": {
+        "id": "NKB6xN1WV3YA"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**here we break the figure into three panels.\n",
+        "In the first panel, we plot both f1 and f2 in red and blue, respectively**"
+      ],
+      "metadata": {
+        "id": "6ntfRb4tV6OS"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "plt.subplot(311)\n",
+        "plt.plot(x,f1(x),color='red')\n",
+        "plt.plot(x,f2(x),color='blue')"
+      ],
+      "metadata": {
+        "id": "_AjlmZe7V8UN"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**the extra lines here limit the x-range of the plot**"
+      ],
+      "metadata": {
+        "id": "Odt2P-nUV93V"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "plt.subplot(311)\n",
+        "plt.plot(x,f1(x),color='red')\n",
+        "plt.plot(x,f2(x),color='blue')\n",
+        "############################\n",
+        "plt.xlim([min(x), max(x)])"
+      ],
+      "metadata": {
+        "id": "7BX-QqejV_VE"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**Now let's add some vertical and horizontal black lines of width=1**"
+      ],
+      "metadata": {
+        "id": "MZYcJJE3WM8w"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "plt.subplot(311)\n",
+        "plt.plot(x,f1(x),color='red')\n",
+        "plt.plot(x,f2(x),color='blue')\n",
+        "plt.xlim([min(x), max(x)])\n",
+        "############################\n",
+        "plt.axvline(x=0,color='k',linewidth=1)\n",
+        "plt.axhline(y=0,color='k',linewidth=1)"
+      ],
+      "metadata": {
+        "id": "JkArdp1nWOOg"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**Now lets add the second panel, and in it we'll plot f1 as a continuous red line, comparing it to f1 evaluated on the array x1 as discrete red circles.\n",
+        "The red circles are plotted using the errorbar function**"
+      ],
+      "metadata": {
+        "id": "_A9tPDreWQgi"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "plt.subplot(311)\n",
+        "plt.plot(x,f1(x),color='red')\n",
+        "plt.plot(x,f2(x),color='blue')\n",
+        "plt.xlim([min(x), max(x)])\n",
+        "plt.axvline(x=0,color='k',linewidth=1)\n",
+        "plt.axhline(y=0,color='k',linewidth=1)\n",
+        "#####################################\n",
+        "plt.subplot(312)\n",
+        "plt.plot(x,f1(x),color='red')\n",
+        "plt.errorbar(x1,f1(x1),markersize=8,fmt='o',color='r',mfc='white',mec='r', elinewidth=2, capsize=4, mew=1.4)\n",
+        "plt.xlim([min(x), max(x)])\n",
+        "plt.axvline(x=0,color='k',linewidth=1)\n",
+        "plt.axhline(y=0,color='k',linewidth=1)"
+      ],
+      "metadata": {
+        "id": "uLLSNVqmWTIe"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**Now lets add a third panel, and in it plot f2 as a continuous blue line\n",
+        "and compare it to the function f2 evaluated on the array x1 as blue squares. We'll then save it to the file 'example_plot.pdf' which will appear in your Python4Physics folder in Google Drive!**"
+      ],
+      "metadata": {
+        "id": "tF6fvmFAWUrG"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "plt.subplot(311)\n",
+        "plt.plot(x,f1(x),color='red')\n",
+        "plt.plot(x,f2(x),color='blue')\n",
+        "plt.xlim([min(x), max(x)])\n",
+        "plt.axvline(x=0,color='k',linewidth=1)\n",
+        "plt.axhline(y=0,color='k',linewidth=1)\n",
+        "############################\n",
+        "plt.subplot(312)\n",
+        "plt.plot(x,f1(x),color='red')\n",
+        "plt.errorbar(x1,f1(x1),markersize=8,fmt='o',color='r',mfc='white',mec='r', elinewidth=2, capsize=4, mew=1.4)\n",
+        "plt.xlim([min(x), max(x)])\n",
+        "plt.axvline(x=0,color='k',linewidth=1)\n",
+        "plt.axhline(y=0,color='k',linewidth=1)\n",
+        "###########################\n",
+        "plt.subplot(313)\n",
+        "plt.plot(x,f2(x),color='b')\n",
+        "plt.errorbar(x1,f2(x1),markersize=8,fmt='s',color='b',mfc='white',mec='b', elinewidth=2, capsize=4, mew=1.4)\n",
+        "plt.xlim([min(x), max(x)])\n",
+        "plt.axvline(x=0,color='k',linewidth=1)\n",
+        "plt.axhline(y=0,color='k',linewidth=1)\n",
+        "\n",
+        "plt.savefig(filepath+'example_plot.pdf',\n",
+        "\t\t\t\tbbox_inches='tight',\n",
+        "\t\t\t\ttransparent=True)"
+      ],
+      "metadata": {
+        "id": "PYJSD7uFWWgz"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "**here save the figure**"
+      ],
+      "metadata": {
+        "id": "UKQsaTfrWaBV"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "CK_rKfQNWmtT"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
